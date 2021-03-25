@@ -126,7 +126,6 @@
 import Vue from 'vue'
 import { follow, getProfile, unFollow } from '~/api/user'
 import { addFavorite, deleteFavorite, getArticles } from '~/api/article'
-import { mapState } from '_vuex@3.6.2@vuex'
 
 export default Vue.extend({
   watchQuery:['tab','page'],
