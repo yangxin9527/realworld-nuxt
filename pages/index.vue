@@ -22,7 +22,7 @@
                       active:tab==='your_feed'
                     }"
                     :to="{
-                      name:'index',
+                      path:'/',
                       query:{
                         tab:'your_feed'
                       }
@@ -39,7 +39,7 @@
                       active:(tab==='global_feed')
                     }"
                     :to="{
-                      name:'index',
+                      path:'/',
                        query:{
                         tab:'global_feed'
                       }
@@ -72,19 +72,13 @@
           <div class="article-preview" v-for="item in list" :key="item.slug">
             <div class="article-meta">
               <nuxt-link :to="{
-                name:'profile',
-                query:{
-                  username:item.author.username
-                }
+                  path:'/profile/'+item.author.username
               }">
                 <img :src=" item.author.image">
               </nuxt-link>
               <div class="info">
                 <nuxt-link :to="{
-                name:'profile',
-                query:{
-                  username:item.author.username
-                }
+                  path:'/profile/'+item.author.username
               }" class="author">
                   {{ item.author.username }}
                 </nuxt-link>
@@ -99,7 +93,7 @@
                 <i class="ion-heart"/> {{ item.favoritesCount }}
               </button>
             </div>
-            <nuxt-link :to="`article/${item.slug}`" class="preview-link">
+            <nuxt-link :to="`/article/${item.slug}`" class="preview-link">
               <h1>{{ item.title }}</h1>
               <p>{{ item.description }}</p>
               <span>Read more...</span>
@@ -109,7 +103,7 @@
           <ul class="pagination">
             <li class="page-item" :class="{active: page === item }" v-for="item in totalPage" :key="item">
               <nuxt-link class="page-link ng-binding" :to="{
-               name:'index',
+               path:'/',
                query:{
                  page:item,
                  tab,
@@ -124,10 +118,9 @@
         <div class="col-md-3">
           <div class="sidebar">
             <p>Popular Tags</p>
-
             <div class="tag-list">
               <nuxt-link :to="{
-                name:'index',
+                path:'/',
                 query:{
                   tag,
                   tab:'tag'
@@ -135,7 +128,6 @@
               }" :key="index" v-for="(tag,index) in tags" class="tag-pill tag-default">
                 {{ tag }}
               </nuxt-link>
-
             </div>
           </div>
         </div>
@@ -176,7 +168,7 @@ export default {
       limit,
       tags: tags,
       tag,
-      tab: query.tab || ''
+      tab: query.tab || 'global_feed'
     }
   },
   methods: {
@@ -207,7 +199,7 @@ export default {
   },
   data () {
     return {
-      tab: 'global_feed'
+
     }
   }
 }

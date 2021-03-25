@@ -15,6 +15,11 @@
     <div class="row article-content">
       <div class="col-md-12" v-html="article.body">
       </div>
+      <div class="tag-list">
+                <span v-for="(item,index) in article.tagList" :key="item" class="tag-default tag-pill ng-binding ng-scope">
+                  {{item}}
+                </span>
+      </div>
     </div>
 
     <hr />
@@ -30,7 +35,7 @@
 </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import MarkdownIt from 'markdown-it'
 import {getArticle} from '@/api/article'
@@ -47,11 +52,18 @@ export default Vue.extend({
     }
   },
   async asyncData({params}){
-    console.log(params)
-     const {data} = await getArticle(params&&params.slug)
-    const {article} =data;
-    const md = new MarkdownIt();
-    article.body = md.render(article.body)
+    let article={
+      author:{}
+    }
+    try{
+      const {data} = await getArticle(params&&params.slug)
+      article =data.article;
+      const md = new MarkdownIt();
+      article.body = md.render(article.body)
+
+    }catch (e){
+
+    }
 
     return {
       article
@@ -66,7 +78,6 @@ export default Vue.extend({
 
     }
   }
-
 })
 </script>
 

@@ -9,12 +9,7 @@
             <nuxt-link v-else to="login">Have an account?</nuxt-link>
           </p>
 
-          <ul class="error-messages">
-            <template v-for='(messages,field) in errors'>
-              <li :key='index' v-for='(message,index) in messages'>{{field}} {{message}}</li>
-
-            </template>
-          </ul>
+          <Error :errors="errors" />
         {{$store.user}}
           <form @submit.prevent="onSubmit">
             <fieldset class="form-group" v-if="!isLogin">
@@ -67,8 +62,10 @@
 <script>
 import request from "@/utils/request";
 import {login,register} from '@/api/user'
+import Error from '~/pages/components/error'
 const Cookie = process.client? require('js-cookie') :undefined
 export default {
+  components: { Error },
   middleware:'notAuthenticated',
   computed: {
     isLogin(vm) {
@@ -100,14 +97,7 @@ export default {
         this.errors = error.response.data.errors
       }
        
-//           bio: null
-// createdAt: "2021-03-10T14:45:55.066Z"
-// email: "364332625@qq.com"
-// id: 148548
-// image: null
-// token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTQ4NTQ4LCJ1c2VybmFtZSI6IuadqOaYlTEiLCJleHAiOjE2MjEyNTg1NTZ9.pdGpInT8X_5ra5xttq43jyHli8ZRnV_FrB-erfjtLbw"
-// updatedAt: "2021-03-10T14:46:24.656Z"
-// username: "杨昕1"
+
 
 
     },

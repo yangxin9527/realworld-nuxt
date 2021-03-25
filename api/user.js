@@ -14,8 +14,42 @@ function register(data){
     data
   })
 }
+function UpdateUser(data){
+  return request({
+    method: "PUT",
+    url: "/api/user",
+    data
+  })
+}
+
+
+function getProfile(username){
+  return request({
+    method: "GET",
+    url: "/api/profiles/"+username
+  })
+}
+function follow(username){
+  return request({
+    method: "POST",
+    url: `/api/profiles/${username}/follow`
+  })
+}
+
+function unFollow(username){
+  return request({
+    method: "DELETE",
+    url: `/api/profiles/${username}/follow`
+  })
+}
+
+
 
 export {
   login,
-  register
+  register,
+  UpdateUser,
+  getProfile,
+  follow,
+  unFollow
 }

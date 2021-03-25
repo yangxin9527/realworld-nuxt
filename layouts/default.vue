@@ -11,17 +11,17 @@
 
           <template v-if="user">
             <li class="nav-item">
-              <nuxt-link class="nav-link" to="create">
+              <nuxt-link class="nav-link" to="/create">
                 <i class="ion-compose"></i>&nbsp;New Post
               </nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link class="nav-link" to="settings">
+              <nuxt-link class="nav-link" to="/settings">
                 <i class="ion-gear-a"></i>&nbsp;Settings
               </nuxt-link>
             </li>
             <li class="nav-item">
-              <nuxt-link class="nav-link" to="profile">
+              <nuxt-link class="nav-link" to="/profile">
                 <img :src="user.image" class="user-pic" alt="">
                 {{ user.username }}
               </nuxt-link>

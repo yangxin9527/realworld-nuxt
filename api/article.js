@@ -46,13 +46,36 @@ function addComments({slug,data}){
   })
 }
 function deleteComment({slug,id}){
-
   return request({
     method:'DELETE',
     url: `/api/articles/${slug}/comments/${id}`
 
   })
 }
+
+function createArticle(data){
+  return request({
+    method:'POST',
+    url: `/api/articles/`,
+    data
+  })
+}
+function updateArticle(slug,data){
+  return request({
+    method:'PUT',
+    url: `/api/articles/${slug}`,
+    data
+  })
+}
+function deleteArticle(slug){
+  return request({
+    method:'DELETE',
+    url: `/api/articles/${slug}`
+  })
+}
+
+
+
 
 export {
   getArticles,
@@ -63,4 +86,7 @@ export {
   getComments,
   addComments,
   deleteComment,
+  createArticle,
+  deleteArticle,
+  updateArticle
 }
