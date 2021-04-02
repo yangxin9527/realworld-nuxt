@@ -1,5 +1,6 @@
 module.exports={
   router:{
+    base: '/realworld/',
     linkActiveClass:'active',
     extendRoutes(routes,resolve){
       routes.push(...[{
