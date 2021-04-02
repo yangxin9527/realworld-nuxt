@@ -17,5 +17,8 @@ module.exports={
   plugins:[
     '~/plugins/request.js',
     '~/plugins/dayjs.js',
-  ]
+  ],
+  build: {
+    publicPath: '/realworld/'
+  }
 }
