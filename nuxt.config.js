@@ -10,6 +10,7 @@ module.exports={
       }])
     }
   },
+  css: ['~/static/main'],
   server:{
     host:'0.0.0.0',
     port:3000
@@ -19,6 +20,6 @@ module.exports={
     '~/plugins/dayjs.js',
   ],
   build: {
-    publicPath: '/realworld/'
-  }
+    extractCSS: true
+  },
 }
