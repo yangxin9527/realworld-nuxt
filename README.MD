@@ -1,8 +1,14 @@
 # realworld
 
-[实际地址](http://35.201.220.96/realworld/)
+涉及内容：
+- nuxt
+- github action 自动部署
+- pm2
+- vue
+- session 
 
-### demo 参考连接
+
+### 参考连接
 
 [demo](https://demo.realworld.io/#/)
 
